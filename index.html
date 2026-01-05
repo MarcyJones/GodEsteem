@@ -1,117 +1,372 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>GOD Esteem | Christian Nonprofit</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="GOD Esteem is a Christian nonprofit helping young girls build God-centered confidence and identity." />
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800;900&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
-  <!-- CSS -->
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- Icons -->
+  <!-- Icons + Animations -->
   <script defer src="https://unpkg.com/lucide@latest"></script>
-
-  <!-- Animations -->
-  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 </head>
 
 <body>
+  <!-- Background layer -->
+  <div class="bg">
+    <div class="orb o1"></div>
+    <div class="orb o2"></div>
+    <div class="orb o3"></div>
+    <div class="beam b1"></div>
+    <div class="beam b2"></div>
+    <div class="noise"></div>
+  </div>
+
   <header class="header">
     <div class="container nav">
-      <div class="brand">
+      <a class="brand" href="#top" aria-label="GOD Esteem Home">
         <div class="logo">GE</div>
-        <div>
+        <div class="brand-text">
           <div class="brand-name">GOD Esteem</div>
           <div class="brand-tag">Christian Nonprofit</div>
         </div>
-      </div>
+      </a>
 
-      <nav>
+      <nav class="links">
         <a href="#mission">Mission</a>
         <a href="#programs">Programs</a>
+        <a href="#impact">Impact</a>
         <a href="#contact">Contact</a>
       </nav>
+
+      <div class="cta">
+        <a class="btn btn-ghost" href="#contact">Volunteer</a>
+        <a class="btn btn-primary" href="#donate">Donate</a>
+      </div>
+
+      <button class="menu" aria-label="Open menu" aria-expanded="false">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+
+    <div class="drawer" aria-hidden="true">
+      <div class="container drawer-inner">
+        <a href="#mission" class="drawer-link">Mission</a>
+        <a href="#programs" class="drawer-link">Programs</a>
+        <a href="#impact" class="drawer-link">Impact</a>
+        <a href="#contact" class="drawer-link">Contact</a>
+        <div class="drawer-actions">
+          <a class="btn btn-ghost" href="#contact">Volunteer</a>
+          <a class="btn btn-primary" href="#donate">Donate</a>
+        </div>
+      </div>
     </div>
   </header>
 
-  <main>
+  <main id="top">
     <!-- HERO -->
-    <section class="hero reveal">
-      <h1>
-        Empowering girls to walk in
-        <span class="accent">God-given confidence</span>
-      </h1>
-      <p>
-        GOD Esteem is a Christian nonprofit helping young girls break free from
-        negative self-image and discover their identity in Christ.
-      </p>
-      <a href="#contact" class="btn">Get Involved</a>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-left">
+          <div class="pill reveal">
+            <span class="pill-dot"></span>
+            Faith + Confidence + Community
+          </div>
+
+          <h1 class="reveal">
+            Helping young girls discover their
+            <span class="accent">God-given worth</span>
+            and walk boldly in purpose.
+          </h1>
+
+          <p class="reveal sub">
+            GOD Esteem is a Christian nonprofit empowering girls to break free from negative self-image,
+            strengthen identity in Christ, and grow through mentorship and programs designed for real life.
+          </p>
+
+          <div class="hero-actions reveal">
+            <a class="btn btn-primary" href="#donate"><i data-lucide="heart-handshake"></i> Support the Mission</a>
+            <a class="btn btn-ghost" href="#programs"><i data-lucide="sparkles"></i> Explore Programs</a>
+          </div>
+
+          <div class="stats reveal">
+            <div class="stat">
+              <div class="stat-top"><i data-lucide="shield-check"></i> Identity</div>
+              <div class="stat-bot">Built on truth</div>
+            </div>
+            <div class="stat">
+              <div class="stat-top"><i data-lucide="users"></i> Mentorship</div>
+              <div class="stat-bot">Safe community</div>
+            </div>
+            <div class="stat">
+              <div class="stat-top"><i data-lucide="sprout"></i> Growth</div>
+              <div class="stat-bot">Purpose & confidence</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-right reveal">
+          <div class="feature-card">
+            <div class="feature-top">
+              <div class="tag"><i data-lucide="cross"></i> Christian nonprofit</div>
+              <h2>GOD Esteem</h2>
+              <p>
+                Confidence is not performance — it’s identity.
+                We help girls grow in faith, self-esteem, and resilience.
+              </p>
+            </div>
+            <div class="feature-bottom">
+              <div class="chip"><i data-lucide="sparkle"></i> Workshops</div>
+              <div class="chip"><i data-lucide="message-circle-heart"></i> Mentorship</div>
+              <div class="chip"><i data-lucide="crown"></i> Leadership</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- MISSION -->
-    <section id="mission" class="section reveal">
-      <h2>Our Mission</h2>
-      <p>
-        To empower young girls through faith-based mentorship, encouragement,
-        and programs that affirm their God-given worth and purpose.
-      </p>
+    <!-- MISSION / VISION -->
+    <section id="mission" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="reveal">Mission & Vision</h2>
+          <p class="reveal section-sub">
+            Grounded in faith. Designed for impact. Built to help girls walk confidently in who God created them to be.
+          </p>
+        </div>
 
-      <h2>Our Vision</h2>
-      <p>
-        Our vision is that young girls everywhere will be free from negative
-        self-image and low self-esteem.
-      </p>
+        <div class="grid-2">
+          <div class="glass reveal">
+            <div class="glass-ic"><i data-lucide="target"></i></div>
+            <h3>Our Mission</h3>
+            <p>
+              To empower young girls through faith-based mentorship, encouragement, and programs that affirm
+              their God-given value, confidence, and purpose.
+            </p>
+          </div>
+
+          <div class="glass reveal">
+            <div class="glass-ic"><i data-lucide="eye"></i></div>
+            <h3>Our Vision</h3>
+            <p>
+              Our vision is that young girls everywhere will be free from negative self-image and low self-esteem.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- PROGRAMS -->
-    <section id="programs" class="section reveal">
-      <h2>Programs</h2>
-
-      <div class="cards">
-        <div class="card">
-          <i data-lucide="users"></i>
-          <h3>Mentorship</h3>
-          <p>Safe, faith-centered relationships that build confidence.</p>
+    <section id="programs" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="reveal">Programs</h2>
+          <p class="reveal section-sub">Modern, uplifting experiences that build confidence and identity — not pressure.</p>
         </div>
 
-        <div class="card">
-          <i data-lucide="sparkles"></i>
-          <h3>Workshops</h3>
-          <p>Confidence, self-worth, and identity rooted in God.</p>
+        <div class="cards">
+          <article class="card reveal">
+            <div class="card-top">
+              <div class="ic"><i data-lucide="message-circle-heart"></i></div>
+              <h3>Mentorship Circles</h3>
+            </div>
+            <p>Faith-centered small groups where girls feel seen, heard, and supported.</p>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-top">
+              <div class="ic"><i data-lucide="sparkles"></i></div>
+              <h3>Confidence Workshops</h3>
+            </div>
+            <p>Tools for self-esteem, boundaries, resilience, and healthy identity — rooted in scripture.</p>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-top">
+              <div class="ic"><i data-lucide="crown"></i></div>
+              <h3>Leadership & Purpose</h3>
+            </div>
+            <p>Helping girls discover gifts, strengthen their voice, and lead with excellence.</p>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-top">
+              <div class="ic"><i data-lucide="hand-heart"></i></div>
+              <h3>Family Support</h3>
+            </div>
+            <p>Resources for parents/guardians so growth continues outside of events and sessions.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- IMPACT -->
+    <section id="impact" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="reveal">Impact</h2>
+          <p class="reveal section-sub">
+            Replace these numbers anytime — they’re here to make the page feel alive and credible.
+          </p>
         </div>
 
-        <div class="card">
-          <i data-lucide="crown"></i>
-          <h3>Leadership</h3>
-          <p>Helping girls discover purpose and lead boldly.</p>
+        <div class="impact">
+          <div class="impact-card reveal">
+            <div class="num" data-count="250">0</div>
+            <div class="lbl">Girls served</div>
+          </div>
+          <div class="impact-card reveal">
+            <div class="num" data-count="40">0</div>
+            <div class="lbl">Mentors trained</div>
+          </div>
+          <div class="impact-card reveal">
+            <div class="num" data-count="18">0</div>
+            <div class="lbl">Workshops hosted</div>
+          </div>
+          <div class="impact-card reveal">
+            <div class="num" data-count="12">0</div>
+            <div class="lbl">Partners</div>
+          </div>
+        </div>
+
+        <div class="quote reveal">
+          <div class="qmark">“</div>
+          <p>When a girl learns who she is in God, she stops asking the world for permission to be confident.</p>
+          <div class="qby">— GOD Esteem</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DONATE -->
+    <section id="donate" class="section">
+      <div class="container">
+        <div class="donate reveal">
+          <div class="donate-left">
+            <h2>Partner with us</h2>
+            <p>
+              Your support fuels mentorship, resources, and safe spaces where girls grow in confidence and faith.
+            </p>
+            <ul>
+              <li><i data-lucide="check-circle-2"></i> Sponsor a workshop</li>
+              <li><i data-lucide="check-circle-2"></i> Support mentorship training</li>
+              <li><i data-lucide="check-circle-2"></i> Provide program materials</li>
+            </ul>
+          </div>
+
+          <div class="donate-right">
+            <div class="donate-box">
+              <div class="donate-tag">Donation options</div>
+              <h3>Make a Donation</h3>
+              <p class="muted">
+                Add your real donation link later (PayPal/Stripe). For now, this button opens email.
+              </p>
+
+              <a class="btn btn-primary btn-block" href="mailto:godesteemhsv@gmail.com?subject=Donation%20to%20GOD%20Esteem">
+                <i data-lucide="gift"></i> Donate via Email
+              </a>
+
+              <a class="btn btn-ghost btn-block" href="#contact">
+                <i data-lucide="hand"></i> Become a Volunteer
+              </a>
+
+              <div class="fine">Founder: Marcia Jones</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="section reveal">
-      <h2>Contact</h2>
-      <p>
-        Founder: <strong>Marcia Jones</strong><br />
-        Email:
-        <a href="mailto:godesteemhsv@gmail.com">godesteemhsv@gmail.com</a>
-      </p>
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="reveal">Contact</h2>
+          <p class="reveal section-sub">We’d love to connect. Send a message and your email app will open.</p>
+        </div>
 
-      <a class="btn" href="mailto:godesteemhsv@gmail.com">
-        Email GOD Esteem
-      </a>
+        <div class="contact-grid">
+          <div class="glass reveal">
+            <h3>Get in touch</h3>
+
+            <div class="contact-row">
+              <div class="cic"><i data-lucide="user"></i></div>
+              <div>
+                <div class="clabel">Founder</div>
+                <div class="cvalue">Marcia Jones</div>
+              </div>
+            </div>
+
+            <div class="contact-row">
+              <div class="cic"><i data-lucide="mail"></i></div>
+              <div>
+                <div class="clabel">Email</div>
+                <a class="cvalue link" href="mailto:godesteemhsv@gmail.com">godesteemhsv@gmail.com</a>
+              </div>
+            </div>
+
+            <div class="divider"></div>
+            <p class="muted">No backend needed. When you’re ready, I can connect a real form service.</p>
+          </div>
+
+          <form class="form reveal" id="contactForm">
+            <div class="row">
+              <label>
+                <span>Name</span>
+                <input name="name" required placeholder="Your name" />
+              </label>
+              <label>
+                <span>Email</span>
+                <input name="email" type="email" required placeholder="you@email.com" />
+              </label>
+            </div>
+
+            <label>
+              <span>Subject</span>
+              <input name="subject" required placeholder="How can we help?" />
+            </label>
+
+            <label>
+              <span>Message</span>
+              <textarea name="message" rows="5" required placeholder="Write your message..."></textarea>
+            </label>
+
+            <button class="btn btn-primary btn-block" type="submit">
+              <i data-lucide="send"></i> Send Message
+            </button>
+
+            <div class="form-note">This opens your email app with the message pre-filled.</div>
+          </form>
+        </div>
+      </div>
     </section>
+
+    <footer class="footer">
+      <div class="container foot">
+        <div class="foot-left">
+          <div class="logo sm">GE</div>
+          <div>
+            <div class="foot-name">GOD Esteem</div>
+            <div class="foot-sub">Christian Nonprofit</div>
+          </div>
+        </div>
+
+        <div class="foot-right">
+          <a href="#top">Back to top</a>
+          <span class="sep">•</span>
+          <a href="mailto:godesteemhsv@gmail.com">Email</a>
+        </div>
+      </div>
+      <div class="container foot-bottom">© <span id="year"></span> GOD Esteem</div>
+    </footer>
   </main>
 
-  <footer>
-    © <span id="year"></span> GOD Esteem
-  </footer>
-
-  <!-- JS -->
   <script src="script.js"></script>
 </body>
 </html>
