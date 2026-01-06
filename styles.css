@@ -78,3 +78,33 @@ html {
 .bg, .hero, .hero-media, .hero-art, .media, .art, .image, .logo {
   background-image: none !important;
 }
+/* ============================
+   FORCE REMOVE HUGE HERO LOGO
+   ============================ */
+
+/* If logo is being used as a hero background */
+.bg,
+.bg::before,
+.bg::after {
+  background-image: none !important;
+}
+
+/* If the logo is a giant image element in a hero media wrapper */
+.hero-media img,
+.hero-art img,
+.media img,
+.art img {
+  max-width: 220px !important;
+  width: 70% !important;
+  height: auto !important;
+  display: block !important;
+  margin: 0 auto 18px !important;
+}
+
+/* Emergency: any image inside the first screen/hero */
+main > section:first-of-type img,
+main img:first-of-type {
+  max-width: 220px !important;
+  width: 70% !important;
+  height: auto !important;
+}
