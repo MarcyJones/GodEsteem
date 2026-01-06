@@ -4,220 +4,423 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GOD Esteem | Christian Nonprofit</title>
+  <meta name="description" content="GOD Esteem is a Christian nonprofit empowering girls to break free from negative self-image, strengthen identity in Christ, and grow through mentorship and programs designed for real life." />
 
   <style>
     :root{
-      --bg:#0b0b12;
-      --card:#151521;
+      --bg:#07070d;
+      --bg2:#0b0b14;
+      --card:rgba(255,255,255,.06);
+      --stroke:rgba(255,255,255,.10);
+      --text:#fff;
+      --muted:rgba(255,255,255,.72);
       --pink:#ff2da7;
-      --pink-soft:#ff6fc6;
-      --text:#ffffff;
-      --muted:rgba(255,255,255,.7);
+      --pink2:#ff68c6;
       --radius:22px;
+      --shadow:0 18px 70px rgba(0,0,0,.55);
+      --max:1120px;
     }
-
     *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
       margin:0;
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      background:
-        radial-gradient(1200px 600px at 20% -10%, rgba(255,45,167,.25), transparent),
-        radial-gradient(900px 500px at 90% 20%, rgba(255,45,167,.15), transparent),
-        var(--bg);
       color:var(--text);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,system-ui,sans-serif;
+      background:
+        radial-gradient(900px 500px at 10% -10%, rgba(255,45,167,.32), transparent 55%),
+        radial-gradient(900px 500px at 85% 15%, rgba(255,45,167,.20), transparent 60%),
+        radial-gradient(700px 520px at 30% 110%, rgba(255,45,167,.16), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
+
+    /* Ambient background */
+    .bg{
+      position:fixed; inset:0; pointer-events:none; z-index:-1;
+      opacity:.9;
+    }
+    .orb{
+      position:absolute; border-radius:999px; filter:blur(40px);
+      background:radial-gradient(circle at 30% 30%, rgba(255,45,167,.55), rgba(255,45,167,0) 70%);
+      animation: floaty 10s ease-in-out infinite;
+    }
+    .o1{width:420px;height:420px;left:-120px;top:-120px}
+    .o2{width:520px;height:520px;right:-180px;top:120px;animation-duration:12s}
+    .o3{width:480px;height:480px;left:20%;bottom:-240px;animation-duration:14s}
+    .noise{
+      position:absolute; inset:0;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.25'/%3E%3C/svg%3E");
+      opacity:.08;
+      mix-blend-mode:overlay;
+    }
+    @keyframes floaty{
+      0%,100%{transform:translate3d(0,0,0) scale(1)}
+      50%{transform:translate3d(0,22px,0) scale(1.03)}
     }
 
-    a{color:inherit;text-decoration:none}
-
-    /* ===== HEADER ===== */
+    /* Header */
     header{
-      position:sticky;
-      top:0;
-      z-index:100;
+      position:sticky; top:0; z-index:50;
+      background:rgba(8,8,14,.55);
       backdrop-filter: blur(12px);
-      background:rgba(10,10,20,.6);
       border-bottom:1px solid rgba(255,255,255,.08);
     }
-
     .nav{
-      max-width:1100px;
-      margin:auto;
-      padding:14px 18px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:14px;
     }
-
     .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
+      display:flex; align-items:center; gap:12px;
+      min-width: 220px;
     }
-
     .logo-img{
-      width:44px;
-      height:44px;
-      border-radius:50%;
-      object-fit:contain;
-      background:#fff;
-      padding:4px;
-      box-shadow:0 6px 20px rgba(255,45,167,.4);
+      width:44px; height:44px; border-radius:50%;
+      object-fit:contain; background:#fff; padding:4px;
+      box-shadow:0 10px 30px rgba(255,45,167,.35);
     }
-
-    .brand-title strong{
-      display:block;
-      font-size:16px;
+    .brand-title strong{display:block; font-size:16px; letter-spacing:.2px}
+    .brand-title small{display:block; font-size:12px; color:var(--muted)}
+    .links{display:flex; gap:14px; flex-wrap:wrap; justify-content:flex-end}
+    .links a{
+      padding:8px 10px; border-radius:999px;
+      color:rgba(255,255,255,.85);
+      border:1px solid transparent;
     }
-
-    .brand-title small{
-      font-size:12px;
-      color:var(--muted);
-    }
-
-    /* ===== HERO ===== */
-    main{
-      max-width:1100px;
-      margin:auto;
-      padding:70px 18px 40px;
-    }
-
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 14px;
+    .links a:hover{border-color:rgba(255,255,255,.16); background:rgba(255,255,255,.05)}
+    .nav-cta{display:flex; gap:10px; align-items:center}
+    .btn{
+      border:0; cursor:pointer;
+      padding:10px 14px;
       border-radius:999px;
-      background:rgba(255,255,255,.08);
+      font-weight:700;
+      letter-spacing:.2px;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+      user-select:none;
+    }
+    .btn:active{transform:scale(.98)}
+    .btn-primary{
+      background:linear-gradient(135deg, var(--pink), var(--pink2));
+      color:#120011;
+      box-shadow:0 14px 40px rgba(255,45,167,.25);
+    }
+    .btn-ghost{
+      background:rgba(255,255,255,.06);
+      color:#fff;
+      border:1px solid rgba(255,255,255,.10);
+    }
+    .btn:hover{transform:translateY(-1px)}
+
+    /* Hero */
+    main{padding:62px 0 30px}
+    .hero{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:24px;
+      align-items:start;
+    }
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr}
+      .links{display:none}
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:8px 14px; border-radius:999px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      color:rgba(255,255,255,.85);
       font-size:13px;
+      margin-bottom:16px;
+      width:fit-content;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:50%;
+      background:var(--pink);
+      box-shadow:0 0 0 6px rgba(255,45,167,.18);
+    }
+    h1{
+      font-family: Georgia, "Times New Roman", serif;
+      font-size:clamp(38px, 7vw, 64px);
+      line-height:1.05;
+      margin:0 0 16px;
+      letter-spacing:-.8px;
+    }
+    h1 .accent{color:var(--pink)}
+    .lead{
+      color:var(--muted);
+      line-height:1.7;
+      font-size:16px;
+      max-width: 620px;
+      margin:0 0 22px;
+    }
+    .actions{display:flex; gap:12px; flex-wrap:wrap}
+    .hero-cards{
+      display:grid; gap:14px;
+    }
+    .card{
+      background:var(--card);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow: var(--shadow);
+    }
+    .card strong{display:block; font-size:18px; margin-bottom:6px}
+    .card small{color:rgba(255,255,255,.72)}
+    .fade{
+      opacity:0; transform: translateY(14px);
+      animation: up .7s ease forwards;
+    }
+    .d2{animation-delay:.12s}
+    .d3{animation-delay:.22s}
+    .d4{animation-delay:.32s}
+    @keyframes up{
+      to{opacity:1; transform: translateY(0)}
+    }
+
+    /* Sections */
+    section{padding:46px 0}
+    .section-head{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:14px; flex-wrap:wrap;
       margin-bottom:18px;
     }
-
-    h1{
-      font-family:Georgia,serif;
-      font-size:clamp(36px,7vw,64px);
-      line-height:1.1;
-      margin:0 0 18px;
+    .section-head h2{
+      margin:0;
+      font-size:28px;
+      letter-spacing:-.4px;
     }
-
-    h1 span{
-      color:var(--pink);
-    }
-
-    p{
-      max-width:520px;
-      color:var(--muted);
-      line-height:1.6;
-      margin-bottom:26px;
-    }
-
-    .actions{
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-    }
-
-    .btn{
-      padding:14px 22px;
-      border-radius:999px;
-      font-weight:600;
-      border:none;
-      cursor:pointer;
-    }
-
-    .btn-primary{
-      background:linear-gradient(135deg,var(--pink),var(--pink-soft));
-      color:#000;
-    }
-
-    .btn-ghost{
-      background:rgba(255,255,255,.08);
-      color:#fff;
-    }
-
-    /* ===== CARDS ===== */
-    .cards{
+    .section-head p{margin:0; color:var(--muted); max-width:720px}
+    .grid{
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-      gap:18px;
-      margin-top:40px;
+      grid-template-columns: repeat(12, 1fr);
+      gap:16px;
     }
-
-    .card{
-      background:rgba(255,255,255,.06);
-      padding:22px;
+    .col-6{grid-column: span 6;}
+    .col-4{grid-column: span 4;}
+    .col-12{grid-column: span 12;}
+    @media (max-width: 900px){
+      .col-6,.col-4{grid-column: span 12;}
+    }
+    .panel{
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.10);
       border-radius:var(--radius);
-      border:1px solid rgba(255,255,255,.08);
+      padding:20px;
+    }
+    .panel h3{margin:0 0 8px; font-size:18px}
+    .panel p{margin:0; color:var(--muted); line-height:1.7}
+    .tag{
+      display:inline-flex;
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(255,45,167,.14);
+      border:1px solid rgba(255,45,167,.30);
+      color:rgba(255,255,255,.88);
+      font-size:12px;
+      margin-bottom:10px;
     }
 
-    .card strong{
-      display:block;
-      margin-bottom:6px;
+    /* Contact */
+    .contact-box{
+      display:flex; flex-direction:column; gap:12px;
+    }
+    .contact-row{
+      display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+      color:rgba(255,255,255,.86);
+    }
+    .kbd{
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size:12px;
+      padding:4px 8px;
+      border-radius:10px;
+      background:rgba(255,255,255,.07);
+      border:1px solid rgba(255,255,255,.10);
+      color:rgba(255,255,255,.9);
     }
 
     footer{
-      text-align:center;
-      padding:40px 18px;
-      color:var(--muted);
+      padding:30px 0 46px;
+      color:rgba(255,255,255,.60);
       font-size:13px;
+      text-align:center;
+      border-top:1px solid rgba(255,255,255,.08);
     }
   </style>
 </head>
 
 <body>
+  <div class="bg">
+    <div class="orb o1"></div>
+    <div class="orb o2"></div>
+    <div class="orb o3"></div>
+    <div class="noise"></div>
+  </div>
 
-  <!-- HEADER -->
-  <header>
-    <div class="nav">
-      <div class="brand">
-        <img src="IMG_9697.jpeg" alt="GOD Esteem Logo" class="logo-img">
+  <header id="top">
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="GOD Esteem Home">
+        <img src="IMG_9697.jpeg" alt="GOD Esteem Logo" class="logo-img" />
         <div class="brand-title">
           <strong>GOD Esteem</strong>
           <small>Christian Nonprofit</small>
         </div>
+      </a>
+
+      <nav class="links" aria-label="Primary navigation">
+        <a href="#mission">Mission</a>
+        <a href="#vision">Vision</a>
+        <a href="#programs">Programs</a>
+        <a href="#impact">Impact</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="nav-cta">
+        <a class="btn btn-ghost" href="#programs">Explore</a>
+        <a class="btn btn-primary" href="#contact">Support</a>
       </div>
     </div>
   </header>
 
-  <!-- HERO -->
-  <main>
-    <div class="pill">Faith + Confidence + Community</div>
+  <main class="wrap">
+    <div class="hero">
+      <div>
+        <div class="pill fade"><span class="dot"></span> Faith + Confidence + Community</div>
 
-    <h1>
-      Helping young girls discover their
-      <span>God-given worth</span>
-      and walk boldly in purpose.
-    </h1>
+        <h1 class="fade d2">
+          Helping young girls discover their
+          <span class="accent">God-given worth</span>
+          and walk boldly in purpose.
+        </h1>
 
-    <p>
-      GOD Esteem is a Christian nonprofit empowering girls to break free from
-      negative self-image, strengthen identity in Christ, and grow through
-      mentorship and programs designed for real life.
-    </p>
+        <p class="lead fade d3">
+          GOD Esteem is a Christian nonprofit empowering girls to break free from negative self-image,
+          strengthen identity in Christ, and grow through mentorship and programs designed for real life.
+        </p>
 
-    <div class="actions">
-      <button class="btn btn-primary">Support the Mission</button>
-      <button class="btn btn-ghost">Explore Programs</button>
+        <div class="actions fade d4">
+          <a class="btn btn-primary" href="#contact">Support the Mission</a>
+          <a class="btn btn-ghost" href="#programs">Explore Programs</a>
+        </div>
+      </div>
+
+      <div class="hero-cards">
+        <div class="card fade d2">
+          <strong>Identity</strong>
+          <small>Built on truth</small>
+        </div>
+        <div class="card fade d3">
+          <strong>Mentorship</strong>
+          <small>Safe community</small>
+        </div>
+        <div class="card fade d4">
+          <strong>Growth</strong>
+          <small>Purpose & confidence</small>
+        </div>
+      </div>
     </div>
 
-    <section class="cards">
-      <div class="card">
-        <strong>Identity</strong>
-        Built on truth
+    <section id="mission">
+      <div class="section-head">
+        <h2>Mission</h2>
+        <p>What we do and why it matters.</p>
       </div>
-      <div class="card">
-        <strong>Mentorship</strong>
-        Safe community
+      <div class="grid">
+        <div class="panel col-12">
+          <span class="tag">Mission</span>
+          <p>
+            Our mission is to empower young girls to break free from negative self-image,
+            strengthen their identity in Christ, and grow through mentorship and programs designed for real life.
+          </p>
+        </div>
       </div>
-      <div class="card">
-        <strong>Growth</strong>
-        Purpose & confidence
+    </section>
+
+    <section id="vision">
+      <div class="section-head">
+        <h2>Vision</h2>
+        <p>What we see for the next generation.</p>
+      </div>
+      <div class="grid">
+        <div class="panel col-12">
+          <span class="tag">Vision</span>
+          <p>
+            Our vision is that young girls everywhere will be free from negative self-image and low self-esteem,
+            walking confidently in who God created them to be.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="programs">
+      <div class="section-head">
+        <h2>Programs</h2>
+        <p>Practical support that meets girls where they are.</p>
+      </div>
+      <div class="grid">
+        <div class="panel col-4">
+          <h3>Mentorship Circles</h3>
+          <p>Small group support, accountability, and encouragement rooted in faith.</p>
+        </div>
+        <div class="panel col-4">
+          <h3>Confidence Workshops</h3>
+          <p>Tools to build self-worth, healthy boundaries, and strong identity in Christ.</p>
+        </div>
+        <div class="panel col-4">
+          <h3>Community Events</h3>
+          <p>Safe spaces that celebrate growth, purpose, and positive friendships.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="impact">
+      <div class="section-head">
+        <h2>Impact</h2>
+        <p>How support turns into transformation.</p>
+      </div>
+      <div class="grid">
+        <div class="panel col-6">
+          <h3>Confidence & Identity</h3>
+          <p>Girls learn to replace negative self-talk with truth, value, and purpose.</p>
+        </div>
+        <div class="panel col-6">
+          <h3>Mentorship & Community</h3>
+          <p>Girls gain safe guidance, consistent support, and healthy connections.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-head">
+        <h2>Contact</h2>
+        <p>Reach out to learn more, partner with us, or support the mission.</p>
+      </div>
+
+      <div class="panel contact-box">
+        <div class="contact-row">
+          <strong>Founder:</strong> <span>Marcia Jones</span>
+        </div>
+        <div class="contact-row">
+          <strong>Email:</strong>
+          <a class="kbd" href="mailto:godesteemhsv@gmail.com">godesteemhsv@gmail.com</a>
+        </div>
+
+        <div class="contact-row" style="margin-top:10px;">
+          <a class="btn btn-primary" href="mailto:godesteemhsv@gmail.com?subject=GOD%20Esteem%20Inquiry">Email GOD Esteem</a>
+          <a class="btn btn-ghost" href="#top">Back to top</a>
+        </div>
       </div>
     </section>
   </main>
 
   <footer>
-    © 2026 GOD Esteem · Founded by Marcia Jones
+    © <span id="year"></span> GOD Esteem · Founded by Marcia Jones
   </footer>
 
+  <script>
+    // Set current year automatically
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
