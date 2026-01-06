@@ -108,3 +108,24 @@ main img:first-of-type {
   width: 70% !important;
   height: auto !important;
 }
+/* =========================================
+   FIX: Hide BIG logo everywhere (except header)
+   ========================================= */
+
+/* Hide the logo image anywhere it appears on the page */
+img[src*="IMG_9697"] {
+  display: none !important;
+}
+
+/* But show it inside the header at a proper size */
+header img[src*="IMG_9697"] {
+  display: inline-block !important;
+  width: 44px !important;
+  height: 44px !important;
+  max-width: 44px !important;
+  object-fit: contain !important;
+  border-radius: 50% !important;
+  background: #fff !important;
+  padding: 4px !important;
+  box-shadow: 0 6px 20px rgba(255,45,167,.35) !important;
+}
