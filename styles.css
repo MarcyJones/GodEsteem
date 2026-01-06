@@ -74,3 +74,7 @@ html {
   padding: 6px;
   box-shadow: 0 10px 30px rgba(255,45,167,.35);
 }
+/* ===== STOP GIANT LOGO BACKGROUNDS ===== */
+.bg, .hero, .hero-media, .hero-art, .media, .art, .image, .logo {
+  background-image: none !important;
+}
