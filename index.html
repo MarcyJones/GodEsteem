@@ -2,44 +2,325 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>GOD Esteem | Christian Nonprofit</title>
-  <meta name="description" content="GOD Esteem is a Christian nonprofit empowering young girls to discover their God-given worth." />
+  <meta name="description" content="GOD Esteem is a Christian nonprofit empowering young girls to break free from negative self-image and discover their God-given worth." />
 
-  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root{
+      --bg0:#05050a;
+      --bg1:#070712;
+      --bg2:#0b0b18;
+      --card:rgba(255,255,255,.07);
+      --stroke:rgba(255,255,255,.12);
+      --text:rgba(255,255,255,.93);
+      --muted:rgba(255,255,255,.72);
+      --pink:#ff2da7;
+      --pink2:#ff64c8;
+      --pink3:#ff93dd;
+      --shadow: 0 22px 90px rgba(0,0,0,.55);
+      --shadow2: 0 12px 40px rgba(0,0,0,.35);
+      --radius: 22px;
+      --radius2: 28px;
+      --max: 1140px;
+    }
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+      background:
+        radial-gradient(900px 520px at 8% -10%, rgba(255,45,167,.36), transparent 60%),
+        radial-gradient(900px 520px at 95% 18%, rgba(255,45,167,.22), transparent 62%),
+        radial-gradient(700px 500px at 35% 110%, rgba(255,45,167,.18), transparent 62%),
+        linear-gradient(180deg, var(--bg0), var(--bg1) 40%, var(--bg2));
+      overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
 
-  <meta name="theme-color" content="#07070d" />
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
+
+    /* Background FX */
+    .fx{position:fixed; inset:0; z-index:-2; pointer-events:none; overflow:hidden}
+    .orb{
+      position:absolute;
+      width:520px;height:520px;border-radius:50%;
+      filter: blur(55px);
+      background: radial-gradient(circle at 30% 30%, rgba(255,45,167,.62), rgba(255,45,167,0) 68%);
+      opacity:.9;
+      animation: float 10s ease-in-out infinite;
+      transform: translate3d(0,0,0);
+    }
+    .orb.o1{top:-180px; left:-160px}
+    .orb.o2{top:120px; right:-220px; animation-duration: 12.5s; opacity:.75}
+    .orb.o3{bottom:-260px; left:22%; animation-duration: 14s; opacity:.75}
+    .orb.o4{bottom:-220px; right:12%; width:460px;height:460px; animation-duration: 16s; opacity:.55}
+    @keyframes float{
+      0%,100%{transform: translateY(0)}
+      50%{transform: translateY(26px)}
+    }
+    .noise{
+      position:absolute; inset:-20%;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E");
+      opacity:.08;
+      mix-blend-mode: overlay;
+      z-index:-1;
+    }
+
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:60;
+      background: rgba(6,6,10,.56);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:14px;
+    }
+    .brand{display:flex; align-items:center; gap:12px; min-width: 220px;}
+    .logo-wrap{
+      width:46px; height:46px; border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,45,167,.7), rgba(255,45,167,.1));
+      box-shadow: 0 10px 30px rgba(255,45,167,.35);
+      display:grid; place-items:center;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+    }
+    .logo-img{
+      width:100%; height:100%;
+      object-fit:contain;
+      background:#fff;
+      padding:4px;
+    }
+    .logo-fallback{
+      width:100%; height:100%;
+      display:grid; place-items:center;
+      font-weight:900;
+      letter-spacing:.5px;
+      color:#08080d;
+      background: linear-gradient(135deg, var(--pink), var(--pink2));
+    }
+    .brand strong{display:block; font-size:16px; letter-spacing:.2px}
+    .brand small{display:block; font-size:12px; color:var(--muted)}
+
+    .links{display:flex; gap:10px; align-items:center;}
+    .links a{
+      padding:9px 12px;
+      border-radius:999px;
+      color: rgba(255,255,255,.84);
+      border:1px solid transparent;
+    }
+    .links a:hover{
+      background: rgba(255,255,255,.06);
+      border-color: rgba(255,255,255,.08);
+    }
+
+    .cta{display:flex; gap:10px; align-items:center;}
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:12px 16px;
+      border-radius:999px;
+      font-weight:800;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.06);
+      color: rgba(255,255,255,.92);
+      box-shadow: var(--shadow2);
+      cursor:pointer;
+      transform: translateY(0);
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+      user-select:none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.085)}
+    .btn.primary{
+      background: linear-gradient(135deg, var(--pink), var(--pink2));
+      border-color: rgba(255,45,167,.45);
+      color:#0c0c12;
+      box-shadow: 0 18px 50px rgba(255,45,167,.22);
+    }
+
+    /* Hero */
+    main{padding:42px 0 40px}
+    .hero{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:24px;
+      align-items:start;
+      padding-top: 18px;
+    }
+    .chip{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.06);
+      color: rgba(255,255,255,.82);
+      font-size:13px;
+      margin-bottom:14px;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, var(--pink3), var(--pink));
+      box-shadow: 0 0 18px rgba(255,45,167,.6);
+    }
+
+    h1{
+      font-family: ui-serif, Georgia, "Times New Roman", serif;
+      font-size: clamp(38px, 6.8vw, 72px);
+      line-height:1.02;
+      margin: 0 0 14px 0;
+      letter-spacing: -.6px;
+    }
+    h1 .pink{color: var(--pink)}
+    .lead{
+      margin:0 0 18px 0;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 16px;
+      max-width: 640px;
+    }
+    .hero-actions{display:flex; flex-wrap:wrap; gap:12px; margin-top:10px}
+
+    .glass{
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
+      border:1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius2);
+      padding: 18px;
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .mini-card{
+      background: rgba(0,0,0,.16);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: 18px;
+      padding: 16px;
+      margin-bottom: 12px;
+      transition: transform .18s ease, background .18s ease;
+    }
+    .mini-card:last-child{margin-bottom:0}
+    .mini-card:hover{transform: translateY(-2px); background: rgba(255,255,255,.06)}
+    .mini-card b{display:block; margin-bottom:6px}
+    .mini-card span{color: var(--muted); font-size: 14px; line-height:1.55}
+
+    section{padding: 46px 0}
+    .section-head{margin-bottom: 14px}
+    .section-head h2{margin:0; font-size: 30px; letter-spacing:-.2px}
+    .section-head p{margin:6px 0 0; color: var(--muted)}
+
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+    }
+    .card{
+      grid-column: span 6;
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
+      border:1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow2);
+      overflow:hidden;
+      transition: transform .18s ease, border-color .18s ease;
+    }
+    .card:hover{transform: translateY(-2px); border-color: rgba(255,45,167,.28)}
+    .card.full{grid-column: span 12}
+    .tag{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border:1px solid rgba(255,45,167,.32);
+      background: rgba(255,45,167,.14);
+      color: rgba(255,255,255,.9);
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      width: fit-content;
+    }
+    .tag i{
+      width:10px; height:10px; border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, var(--pink3), var(--pink));
+      box-shadow: 0 0 18px rgba(255,45,167,.6);
+      display:inline-block;
+    }
+    .card h3{margin:6px 0 8px; font-size: 18px}
+    .card p{margin:0; color: var(--muted); line-height: 1.7}
+
+    .stats{display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px;}
+    .stat{border-radius: 18px; background: rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.10); padding: 16px;}
+    .stat b{font-size: 22px}
+    .stat span{display:block;color:var(--muted);margin-top:4px}
+
+    .quote{
+      border-radius: var(--radius2);
+      background: radial-gradient(900px 300px at 10% 0%, rgba(255,45,167,.20), transparent 60%), rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+      padding: 18px;
+      box-shadow: var(--shadow2);
+    }
+    .quote p{margin:10px 0 0; color:rgba(255,255,255,.86); line-height:1.75}
+    .quote ul{margin:12px 0 0 18px; color:var(--muted); line-height:1.7}
+    .quote li{margin:6px 0}
+
+    .contact-grid{display:grid; grid-template-columns: 1.2fr .8fr; gap: 16px;}
+    .contact-line{display:flex; gap:10px; align-items:flex-start; color:var(--muted); line-height:1.6}
+    .icon{
+      width:34px;height:34px;border-radius:12px;
+      background: rgba(255,45,167,.14);
+      border:1px solid rgba(255,45,167,.28);
+      display:grid; place-items:center;
+      flex:0 0 auto;
+      box-shadow: 0 12px 30px rgba(255,45,167,.12);
+    }
+
+    footer{
+      padding: 34px 0 28px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      color: rgba(255,255,255,.62);
+      text-align:center;
+    }
+
+    @media(max-width: 980px){
+      .hero{grid-template-columns: 1fr}
+      .contact-grid{grid-template-columns: 1fr}
+      .stats{grid-template-columns: 1fr}
+      .card{grid-column: span 12}
+      .links{display:none}
+    }
+  </style>
 </head>
 
-<body id="top">
-
-  <!-- Animated background -->
-  <div class="bg">
+<body>
+  <div class="fx" aria-hidden="true">
     <div class="orb o1"></div>
     <div class="orb o2"></div>
     <div class="orb o3"></div>
-    <div class="beam b1"></div>
-    <div class="beam b2"></div>
+    <div class="orb o4"></div>
     <div class="noise"></div>
   </div>
 
-  <!-- Header -->
-  <header class="header">
-    <div class="container nav">
-      <a class="brand" href="#top" aria-label="GOD Esteem Home">
-        <img class="brand-logo" src="IMG_9697.jpeg" alt="GOD Esteem logo" />
-        <div class="brand-title">
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="GOD Esteem home">
+        <div class="logo-wrap" aria-hidden="true">
+          <img src="IMG_9697.jpeg" alt="GOD Esteem logo" class="logo-img"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+          <div class="logo-fallback" style="display:none">GE</div>
+        </div>
+        <div>
           <strong>GOD Esteem</strong>
           <small>Christian Nonprofit</small>
         </div>
       </a>
 
-      <nav class="links" aria-label="Primary navigation">
+      <nav class="links" aria-label="Primary">
         <a href="#mission">Mission</a>
         <a href="#vision">Vision</a>
         <a href="#programs">Programs</a>
@@ -48,263 +329,225 @@
       </nav>
 
       <div class="cta">
-        <a class="btn btn-ghost" href="#contact">Volunteer</a>
-        <a class="btn btn-primary" href="#support">Support</a>
+        <a class="btn" href="#programs">Explore Programs</a>
+        <a class="btn primary" href="#contact">Support the Mission</a>
       </div>
-
-      <button class="menu" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-
-    <!-- Mobile menu -->
-    <div class="mobile" hidden>
-      <a href="#mission">Mission</a>
-      <a href="#vision">Vision</a>
-      <a href="#programs">Programs</a>
-      <a href="#impact">Impact</a>
-      <a href="#contact">Contact</a>
-      <a class="btn btn-primary" href="#support">Support the Mission</a>
     </div>
   </header>
 
-  <!-- Hero -->
-  <main class="container">
+  <main id="top" class="wrap">
     <section class="hero">
-      <div class="hero-left fade-up">
-        <div class="pill">
-          <span class="dot"></span>
-          Faith + Confidence + Community
-        </div>
-
+      <div>
+        <div class="chip"><span class="dot"></span> Faith + Confidence + Community</div>
         <h1>
-          Helping young girls discover their
-          <span class="accent">God-given worth</span>
+          Helping young girls discover their <span class="pink">God-given worth</span><br/>
           and walk boldly in purpose.
         </h1>
-
         <p class="lead">
           GOD Esteem is a Christian nonprofit empowering girls to break free from negative self-image,
           strengthen identity in Christ, and grow through mentorship and programs designed for real life.
         </p>
 
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#support">Support the Mission</a>
-          <a class="btn btn-ghost" href="#programs">Explore Programs</a>
-        </div>
-
-        <div class="mini-grid">
-          <div class="mini card">
-            <h3>Identity</h3>
-            <p>Built on truth</p>
-          </div>
-          <div class="mini card">
-            <h3>Mentorship</h3>
-            <p>Safe community</p>
-          </div>
-          <div class="mini card">
-            <h3>Growth</h3>
-            <p>Purpose & confidence</p>
-          </div>
+          <a class="btn primary" href="#contact">Support the Mission</a>
+          <a class="btn" href="#programs">Explore Programs</a>
         </div>
       </div>
 
-      <div class="hero-right fade-up">
-        <div class="feature card">
-          <div class="feature-top">
-            <span class="tag">Christian nonprofit</span>
-            <span class="tag glow">Girls empowerment</span>
-          </div>
-          <h2>Daily declarations + mentorship that reshapes self-worth.</h2>
-          <p>
-            We help girls build confidence through biblical affirmations, supportive mentors,
-            and programs that meet them where they are.
-          </p>
-
-          <div class="stats">
-            <div class="stat">
-              <strong>Faith-based</strong>
-              <span>Word-rooted growth</span>
-            </div>
-            <div class="stat">
-              <strong>Community</strong>
-              <span>Safe support network</span>
-            </div>
-            <div class="stat">
-              <strong>Confidence</strong>
-              <span>Identity in Christ</span>
-            </div>
-          </div>
+      <aside class="glass">
+        <div class="mini-card">
+          <b>Identity</b>
+          <span>Built on truth — seeing yourself the way God sees you.</span>
         </div>
-
-        <div class="quote card">
-          <p>
-            “She is clothed with strength and dignity; she can laugh at the days to come.”
-          </p>
-          <span>— Proverbs 31:25</span>
+        <div class="mini-card">
+          <b>Mentorship</b>
+          <span>Safe community and guidance for confidence and resilience.</span>
         </div>
-      </div>
+        <div class="mini-card">
+          <b>Growth</b>
+          <span>Purpose & confidence through consistent encouragement.</span>
+        </div>
+      </aside>
     </section>
 
-    <!-- Mission -->
-    <section id="mission" class="section">
-      <div class="section-head fade-up">
+    <section id="mission">
+      <div class="section-head">
         <h2>Mission / Purpose</h2>
-        <p>What we commit to doing—every day.</p>
+        <p>What we commit to do for the girls we serve.</p>
       </div>
-
-      <div class="grid fade-up">
-        <div class="card pad">
-          <span class="tag">Mission</span>
-          <p class="big">
+      <div class="cards">
+        <div class="card full">
+          <div class="tag"><i></i> Mission / Purpose</div>
+          <p>
             To empower young girls, we commit to helping them see themselves as God sees them.
             Through daily declarations rooted in biblical principles, we aim to foster confidence,
             resilience, and unwavering self-worth.
           </p>
         </div>
-        <div class="card pad">
-          <span class="tag glow">How we do it</span>
-          <ul class="list">
-            <li><span class="check">✓</span> Daily declarations grounded in Scripture</li>
-            <li><span class="check">✓</span> Mentorship and positive role models</li>
-            <li><span class="check">✓</span> Workshops on identity, confidence, and boundaries</li>
-            <li><span class="check">✓</span> Community events that build belonging</li>
-          </ul>
-        </div>
       </div>
     </section>
 
-    <!-- Vision -->
-    <section id="vision" class="section">
-      <div class="section-head fade-up">
+    <section id="vision">
+      <div class="section-head">
         <h2>Vision</h2>
-        <p>Where we believe God is taking this work.</p>
+        <p>The future we’re building together.</p>
       </div>
-
-      <div class="grid fade-up">
-        <div class="card pad">
-          <span class="tag">Vision</span>
-          <p class="big">
+      <div class="cards">
+        <div class="card full">
+          <div class="tag"><i></i> Vision</div>
+          <p>
             Our vision is a world where every young girl experiences freedom from negative self-image
             and low self-esteem. We envision this transformation through the transformative power
             of the Word of God.
           </p>
         </div>
-        <div class="card pad highlight">
-          <h3>What “freedom” looks like</h3>
-          <p class="muted">
-            Girls who speak life over themselves, set healthy boundaries, and walk with confidence
-            because they know who they are in Christ.
-          </p>
-          <a class="btn btn-primary" href="#contact">Get involved</a>
+      </div>
+    </section>
+
+    <section id="programs">
+      <div class="section-head">
+        <h2>Programs & What We Do</h2>
+        <p>Practical support that meets girls where they are.</p>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <div class="tag"><i></i> Mentorship</div>
+          <h3>Faith-based mentoring</h3>
+          <p>Supportive relationships that reinforce identity, confidence, and wise decision-making.</p>
+        </div>
+        <div class="card">
+          <div class="tag"><i></i> Declarations</div>
+          <h3>Daily declarations</h3>
+          <p>Encouragement rooted in biblical principles to replace lies with truth and confidence.</p>
+        </div>
+        <div class="card">
+          <div class="tag"><i></i> Workshops</div>
+          <h3>Confidence-building workshops</h3>
+          <p>Interactive sessions that build resilience, boundaries, purpose, and healthy self-image.</p>
+        </div>
+        <div class="card">
+          <div class="tag"><i></i> Community</div>
+          <h3>Safe community</h3>
+          <p>Spaces where girls can grow, be seen, and feel supported—without judgment.</p>
         </div>
       </div>
     </section>
 
-    <!-- Programs -->
-    <section id="programs" class="section">
-      <div class="section-head fade-up">
-        <h2>Programs</h2>
-        <p>Flexible ways we serve girls and families.</p>
-      </div>
-
-      <div class="cards fade-up">
-        <article class="card pad">
-          <h3>Mentorship Circles</h3>
-          <p>Small groups that build trust, identity, and resilience in a safe, faith-centered space.</p>
-        </article>
-
-        <article class="card pad">
-          <h3>Declarations & Devotionals</h3>
-          <p>Short daily declarations rooted in Scripture to strengthen self-worth and confidence.</p>
-        </article>
-
-        <article class="card pad">
-          <h3>Workshops & Events</h3>
-          <p>Practical teaching on confidence, self-image, purpose, and navigating real-life pressures.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- Impact -->
-    <section id="impact" class="section">
-      <div class="section-head fade-up">
+    <section id="impact">
+      <div class="section-head">
         <h2>Impact</h2>
-        <p>What we’re building together.</p>
+        <p>A simple, clear picture of what we’re aiming for.</p>
       </div>
 
-      <div class="grid fade-up">
-        <div class="card pad">
-          <h3>Identity in Christ</h3>
-          <p class="muted">Teaching girls to replace negative self-talk with God’s truth.</p>
-        </div>
-        <div class="card pad">
-          <h3>Confidence & resilience</h3>
-          <p class="muted">Practical tools to navigate bullying, peer pressure, and comparison.</p>
-        </div>
-        <div class="card pad">
-          <h3>Healthy community</h3>
-          <p class="muted">A supportive environment where girls feel seen, heard, and valued.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Support -->
-    <section id="support" class="section">
-      <div class="section-head fade-up">
-        <h2>Support the Mission</h2>
-        <p>Want to partner with GOD Esteem? Choose a way to help.</p>
-      </div>
-
-      <div class="grid fade-up">
-        <div class="card pad">
-          <h3>Volunteer</h3>
-          <p class="muted">Help with mentorship, events, or admin support.</p>
-          <a class="btn btn-ghost" href="#contact">Volunteer inquiry</a>
-        </div>
-
-        <div class="card pad">
-          <h3>Donate</h3>
-          <p class="muted">Financial support helps fund programs and materials.</p>
-          <a class="btn btn-primary" href="#contact">Ask about giving</a>
+      <div class="cards">
+        <div class="card full">
+          <div class="tag"><i></i> Our Focus</div>
+          <div class="stats">
+            <div class="stat">
+              <b>Identity</b>
+              <span>Rooted in God’s truth, not opinions.</span>
+            </div>
+            <div class="stat">
+              <b>Confidence</b>
+              <span>Built through daily practice & support.</span>
+            </div>
+            <div class="stat">
+              <b>Resilience</b>
+              <span>Strength to stand firm & keep going.</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact" class="section">
-      <div class="section-head fade-up">
+    <section id="declarations">
+      <div class="section-head">
+        <h2>Daily Declarations</h2>
+        <p>Truth you can speak over yourself daily.</p>
+      </div>
+
+      <div class="quote">
+        <div class="tag"><i></i> Speak Life</div>
+        <p>Example declarations you can use in mentoring, workshops, or daily encouragement:</p>
+        <ul>
+          <li>I am loved, chosen, and created with purpose.</li>
+          <li>I am enough because God is with me.</li>
+          <li>I reject negative labels and embrace God’s truth.</li>
+          <li>I am growing in confidence, wisdom, and courage.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-head">
         <h2>Contact</h2>
-        <p>We’d love to connect with you.</p>
+        <p>Reach out to partner, volunteer, or learn more.</p>
       </div>
 
-      <div class="grid fade-up">
-        <div class="card pad">
-          <h3>Founder</h3>
-          <p class="muted"><strong>Marcia Jones</strong></p>
-          <p class="muted">Email: <a class="link" href="mailto:godesteemhsv@gmail.com">godesteemhsv@gmail.com</a></p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="mailto:godesteemhsv@gmail.com">Email GOD Esteem</a>
-            <a class="btn btn-ghost" href="#top">Back to top</a>
+      <div class="contact-grid">
+        <div class="card">
+          <div class="tag"><i></i> Founder</div>
+          <h3>Marcia Jones</h3>
+          <p style="margin-top:6px;color:var(--muted);line-height:1.7">
+            We’d love to connect and share how GOD Esteem can support young girls through faith, community, and mentorship.
+          </p>
+          <div style="margin-top:14px; display:flex; gap:12px; flex-wrap:wrap;">
+            <a class="btn primary" href="mailto:godesteemhsv@gmail.com">Email GOD Esteem</a>
+            <a class="btn" href="#mission">Back to Mission</a>
           </div>
         </div>
 
-        <div class="card pad">
-          <h3>Quick message</h3>
-          <p class="muted">Tap to send an email with a pre-filled subject.</p>
-          <a class="btn btn-primary"
-             href="mailto:godesteemhsv@gmail.com?subject=GOD%20Esteem%20Inquiry&body=Hi%20Marcia%2C%0A%0AI%27d%20love%20to%20learn%20more%20about%20GOD%20Esteem.%0A%0AName%3A%0AInterest%20(Volunteer%2FDonate%2FProgram)%3A%0A%0AThank%20you!">
-            Send a message
-          </a>
+        <div class="card">
+          <div class="tag"><i></i> Info</div>
+
+          <div class="contact-line">
+            <div class="icon">✉️</div>
+            <div>
+              <b style="color:rgba(255,255,255,.92)">Email</b><br/>
+              <span>godesteemhsv@gmail.com</span>
+            </div>
+          </div>
+
+          <div class="contact-line" style="margin-top:12px;">
+            <div class="icon">🤝</div>
+            <div>
+              <b style="color:rgba(255,255,255,.92)">Partner</b><br/>
+              <span>Volunteer, sponsor a program, or invite us to speak.</span>
+            </div>
+          </div>
+
+          <div class="contact-line" style="margin-top:12px;">
+            <div class="icon">💗</div>
+            <div>
+              <b style="color:rgba(255,255,255,.92)">Support</b><br/>
+              <span>Help us expand mentorship and daily declarations.</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <footer class="footer">
-      <p>© <span id="year"></span> GOD Esteem • Founded by Marcia Jones</p>
+    <footer>
+      © <span id="year"></span> GOD Esteem · Founded by Marcia Jones
     </footer>
   </main>
 
-  <script src="script.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Sticky header scroll offset
+    const header = document.querySelector("header");
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener("click",(e)=>{
+        const id = a.getAttribute("href");
+        const target = document.querySelector(id);
+        if(!target) return;
+        e.preventDefault();
+        const y = target.getBoundingClientRect().top + window.scrollY - (header.offsetHeight + 10);
+        window.scrollTo({top:y, behavior:"smooth"});
+      });
+    });
+  </script>
 </body>
 </html>
