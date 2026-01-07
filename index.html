@@ -1,258 +1,310 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>GOD Esteem | Christian Nonprofit</title>
-  <meta name="description" content="GOD Esteem is a Christian nonprofit empowering young girls to discover their God-given worth and confidence." />
+  <meta name="description" content="GOD Esteem is a Christian nonprofit empowering young girls to discover their God-given worth." />
 
-  <style>
-    :root{
-      --bg:#07070d;
-      --bg2:#0b0b14;
-      --card:rgba(255,255,255,.06);
-      --stroke:rgba(255,255,255,.10);
-      --text:#fff;
-      --muted:rgba(255,255,255,.72);
-      --pink:#ff2da7;
-      --pink2:#ff68c6;
-      --radius:22px;
-      --shadow:0 18px 70px rgba(0,0,0,.55);
-      --max:1120px;
-    }
+  <link rel="stylesheet" href="styles.css" />
 
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      color:var(--text);
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,system-ui,sans-serif;
-      background:
-        radial-gradient(900px 500px at 10% -10%, rgba(255,45,167,.32), transparent 55%),
-        radial-gradient(900px 500px at 85% 15%, rgba(255,45,167,.20), transparent 60%),
-        radial-gradient(700px 520px at 30% 110%, rgba(255,45,167,.16), transparent 55%),
-        linear-gradient(180deg, var(--bg), var(--bg2));
-      overflow-x:hidden;
-    }
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
-
-    /* Header */
-    header{
-      position:sticky; top:0; z-index:50;
-      background:rgba(8,8,14,.55);
-      backdrop-filter: blur(12px);
-      border-bottom:1px solid rgba(255,255,255,.08);
-    }
-    .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:14px 0;
-    }
-    .brand{
-      display:flex; align-items:center; gap:12px;
-    }
-    .logo{
-      width:44px; height:44px; border-radius:50%;
-      background:linear-gradient(135deg,var(--pink),var(--pink2));
-      display:grid; place-items:center;
-      color:#000; font-weight:900;
-    }
-    .brand-title strong{display:block; font-size:16px}
-    .brand-title small{display:block; font-size:12px; color:var(--muted)}
-    nav{display:flex; gap:14px}
-    nav a{
-      padding:8px 10px; border-radius:999px;
-      color:rgba(255,255,255,.85);
-    }
-    nav a:hover{background:rgba(255,255,255,.06)}
-
-    /* Hero */
-    main{padding:70px 0 30px}
-    .hero{
-      display:grid;
-      grid-template-columns:1.2fr .8fr;
-      gap:24px;
-      align-items:start;
-    }
-    @media (max-width:900px){
-      .hero{grid-template-columns:1fr}
-      nav{display:none}
-    }
-    .pill{
-      display:inline-flex; gap:10px; align-items:center;
-      padding:8px 14px; border-radius:999px;
-      background:rgba(255,255,255,.06);
-      font-size:13px; margin-bottom:16px;
-    }
-    h1{
-      font-family:Georgia,serif;
-      font-size:clamp(38px,7vw,64px);
-      line-height:1.05;
-      margin:0 0 16px;
-    }
-    h1 span{color:var(--pink)}
-    .lead{
-      color:var(--muted);
-      line-height:1.7;
-      max-width:620px;
-      margin-bottom:22px;
-    }
-    .btn{
-      padding:12px 18px; border-radius:999px;
-      font-weight:700; border:none; cursor:pointer;
-    }
-    .btn-primary{
-      background:linear-gradient(135deg,var(--pink),var(--pink2));
-      color:#000;
-    }
-    .btn-ghost{
-      background:rgba(255,255,255,.08);
-      color:#fff;
-    }
-    .actions{display:flex; gap:12px; flex-wrap:wrap}
-
-    /* Sections */
-    section{padding:50px 0}
-    .section-head{margin-bottom:18px}
-    .section-head h2{margin:0 0 6px; font-size:28px}
-    .section-head p{margin:0; color:var(--muted)}
-    .panel{
-      background:var(--card);
-      border:1px solid var(--stroke);
-      border-radius:var(--radius);
-      padding:22px;
-      box-shadow:var(--shadow);
-    }
-    .tag{
-      display:inline-block;
-      padding:6px 10px;
-      border-radius:999px;
-      background:rgba(255,45,167,.16);
-      border:1px solid rgba(255,45,167,.32);
-      font-size:12px;
-      margin-bottom:10px;
-    }
-    footer{
-      padding:36px 18px;
-      text-align:center;
-      color:rgba(255,255,255,.6);
-      font-size:13px;
-      border-top:1px solid rgba(255,255,255,.08);
-    }
-  </style>
+  <meta name="theme-color" content="#07070d" />
 </head>
 
-<body>
+<body id="top">
 
-<header id="top">
-  <div class="wrap nav">
-    <div class="brand">
-      <div class="logo">GE</div>
-      <div class="brand-title">
-        <strong>GOD Esteem</strong>
-        <small>Christian Nonprofit</small>
+  <!-- Animated background -->
+  <div class="bg">
+    <div class="orb o1"></div>
+    <div class="orb o2"></div>
+    <div class="orb o3"></div>
+    <div class="beam b1"></div>
+    <div class="beam b2"></div>
+    <div class="noise"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="GOD Esteem Home">
+        <img class="brand-logo" src="IMG_9697.jpeg" alt="GOD Esteem logo" />
+        <div class="brand-title">
+          <strong>GOD Esteem</strong>
+          <small>Christian Nonprofit</small>
+        </div>
+      </a>
+
+      <nav class="links" aria-label="Primary navigation">
+        <a href="#mission">Mission</a>
+        <a href="#vision">Vision</a>
+        <a href="#programs">Programs</a>
+        <a href="#impact">Impact</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="cta">
+        <a class="btn btn-ghost" href="#contact">Volunteer</a>
+        <a class="btn btn-primary" href="#support">Support</a>
       </div>
+
+      <button class="menu" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <nav>
+
+    <!-- Mobile menu -->
+    <div class="mobile" hidden>
       <a href="#mission">Mission</a>
       <a href="#vision">Vision</a>
       <a href="#programs">Programs</a>
+      <a href="#impact">Impact</a>
       <a href="#contact">Contact</a>
-    </nav>
-  </div>
-</header>
+      <a class="btn btn-primary" href="#support">Support the Mission</a>
+    </div>
+  </header>
 
-<main class="wrap">
-  <div class="hero">
-    <div>
-      <div class="pill">Faith • Identity • Confidence</div>
-      <h1>
-        Helping young girls discover their
-        <span>God-given worth</span>
-      </h1>
-      <p class="lead">
-        GOD Esteem is a Christian nonprofit dedicated to empowering young girls
-        to break free from negative self-image and grow confidently in who God
-        created them to be.
-      </p>
-      <div class="actions">
-        <a class="btn btn-primary" href="#contact">Support the Mission</a>
-        <a class="btn btn-ghost" href="#programs">Explore Programs</a>
+  <!-- Hero -->
+  <main class="container">
+    <section class="hero">
+      <div class="hero-left fade-up">
+        <div class="pill">
+          <span class="dot"></span>
+          Faith + Confidence + Community
+        </div>
+
+        <h1>
+          Helping young girls discover their
+          <span class="accent">God-given worth</span>
+          and walk boldly in purpose.
+        </h1>
+
+        <p class="lead">
+          GOD Esteem is a Christian nonprofit empowering girls to break free from negative self-image,
+          strengthen identity in Christ, and grow through mentorship and programs designed for real life.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#support">Support the Mission</a>
+          <a class="btn btn-ghost" href="#programs">Explore Programs</a>
+        </div>
+
+        <div class="mini-grid">
+          <div class="mini card">
+            <h3>Identity</h3>
+            <p>Built on truth</p>
+          </div>
+          <div class="mini card">
+            <h3>Mentorship</h3>
+            <p>Safe community</p>
+          </div>
+          <div class="mini card">
+            <h3>Growth</h3>
+            <p>Purpose & confidence</p>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <!-- MISSION -->
-  <section id="mission">
-    <div class="section-head">
-      <h2>Mission / Purpose</h2>
-    </div>
-    <div class="panel">
-      <span class="tag">Mission</span>
-      <p>
-        To empower young girls, we commit to helping them see themselves as God sees them.
-        Through daily declarations rooted in biblical principles, we aim to foster confidence,
-        resilience, and unwavering self-worth.
-      </p>
-    </div>
-  </section>
+      <div class="hero-right fade-up">
+        <div class="feature card">
+          <div class="feature-top">
+            <span class="tag">Christian nonprofit</span>
+            <span class="tag glow">Girls empowerment</span>
+          </div>
+          <h2>Daily declarations + mentorship that reshapes self-worth.</h2>
+          <p>
+            We help girls build confidence through biblical affirmations, supportive mentors,
+            and programs that meet them where they are.
+          </p>
 
-  <!-- VISION -->
-  <section id="vision">
-    <div class="section-head">
-      <h2>Vision</h2>
-    </div>
-    <div class="panel">
-      <span class="tag">Vision</span>
-      <p>
-        Our vision is a world where every young girl experiences freedom from negative self-image
-        and low self-esteem. We envision this transformation through the transformative power
-        of the Word of God.
-      </p>
-    </div>
-  </section>
+          <div class="stats">
+            <div class="stat">
+              <strong>Faith-based</strong>
+              <span>Word-rooted growth</span>
+            </div>
+            <div class="stat">
+              <strong>Community</strong>
+              <span>Safe support network</span>
+            </div>
+            <div class="stat">
+              <strong>Confidence</strong>
+              <span>Identity in Christ</span>
+            </div>
+          </div>
+        </div>
 
-  <!-- PROGRAMS -->
-  <section id="programs">
-    <div class="section-head">
-      <h2>Programs</h2>
-      <p>Faith-centered support that meets girls where they are.</p>
-    </div>
-    <div class="panel">
-      <p>
-        Our programs focus on mentorship, confidence-building workshops,
-        and faith-based encouragement that help girls grow spiritually,
-        emotionally, and socially.
-      </p>
-    </div>
-  </section>
+        <div class="quote card">
+          <p>
+            “She is clothed with strength and dignity; she can laugh at the days to come.”
+          </p>
+          <span>— Proverbs 31:25</span>
+        </div>
+      </div>
+    </section>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="section-head">
-      <h2>Contact</h2>
-    </div>
-    <div class="panel">
-      <p><strong>Founder:</strong> Marcia Jones</p>
-      <p>
-        <strong>Email:</strong>
-        <a href="mailto:godesteemhsv@gmail.com">godesteemhsv@gmail.com</a>
-      </p>
-      <a class="btn btn-primary" href="mailto:godesteemhsv@gmail.com">
-        Email GOD Esteem
-      </a>
-    </div>
-  </section>
-</main>
+    <!-- Mission -->
+    <section id="mission" class="section">
+      <div class="section-head fade-up">
+        <h2>Mission / Purpose</h2>
+        <p>What we commit to doing—every day.</p>
+      </div>
 
-<footer>
-  © <span id="year"></span> GOD Esteem
-</footer>
+      <div class="grid fade-up">
+        <div class="card pad">
+          <span class="tag">Mission</span>
+          <p class="big">
+            To empower young girls, we commit to helping them see themselves as God sees them.
+            Through daily declarations rooted in biblical principles, we aim to foster confidence,
+            resilience, and unwavering self-worth.
+          </p>
+        </div>
+        <div class="card pad">
+          <span class="tag glow">How we do it</span>
+          <ul class="list">
+            <li><span class="check">✓</span> Daily declarations grounded in Scripture</li>
+            <li><span class="check">✓</span> Mentorship and positive role models</li>
+            <li><span class="check">✓</span> Workshops on identity, confidence, and boundaries</li>
+            <li><span class="check">✓</span> Community events that build belonging</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
+    <!-- Vision -->
+    <section id="vision" class="section">
+      <div class="section-head fade-up">
+        <h2>Vision</h2>
+        <p>Where we believe God is taking this work.</p>
+      </div>
 
+      <div class="grid fade-up">
+        <div class="card pad">
+          <span class="tag">Vision</span>
+          <p class="big">
+            Our vision is a world where every young girl experiences freedom from negative self-image
+            and low self-esteem. We envision this transformation through the transformative power
+            of the Word of God.
+          </p>
+        </div>
+        <div class="card pad highlight">
+          <h3>What “freedom” looks like</h3>
+          <p class="muted">
+            Girls who speak life over themselves, set healthy boundaries, and walk with confidence
+            because they know who they are in Christ.
+          </p>
+          <a class="btn btn-primary" href="#contact">Get involved</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Programs -->
+    <section id="programs" class="section">
+      <div class="section-head fade-up">
+        <h2>Programs</h2>
+        <p>Flexible ways we serve girls and families.</p>
+      </div>
+
+      <div class="cards fade-up">
+        <article class="card pad">
+          <h3>Mentorship Circles</h3>
+          <p>Small groups that build trust, identity, and resilience in a safe, faith-centered space.</p>
+        </article>
+
+        <article class="card pad">
+          <h3>Declarations & Devotionals</h3>
+          <p>Short daily declarations rooted in Scripture to strengthen self-worth and confidence.</p>
+        </article>
+
+        <article class="card pad">
+          <h3>Workshops & Events</h3>
+          <p>Practical teaching on confidence, self-image, purpose, and navigating real-life pressures.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Impact -->
+    <section id="impact" class="section">
+      <div class="section-head fade-up">
+        <h2>Impact</h2>
+        <p>What we’re building together.</p>
+      </div>
+
+      <div class="grid fade-up">
+        <div class="card pad">
+          <h3>Identity in Christ</h3>
+          <p class="muted">Teaching girls to replace negative self-talk with God’s truth.</p>
+        </div>
+        <div class="card pad">
+          <h3>Confidence & resilience</h3>
+          <p class="muted">Practical tools to navigate bullying, peer pressure, and comparison.</p>
+        </div>
+        <div class="card pad">
+          <h3>Healthy community</h3>
+          <p class="muted">A supportive environment where girls feel seen, heard, and valued.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Support -->
+    <section id="support" class="section">
+      <div class="section-head fade-up">
+        <h2>Support the Mission</h2>
+        <p>Want to partner with GOD Esteem? Choose a way to help.</p>
+      </div>
+
+      <div class="grid fade-up">
+        <div class="card pad">
+          <h3>Volunteer</h3>
+          <p class="muted">Help with mentorship, events, or admin support.</p>
+          <a class="btn btn-ghost" href="#contact">Volunteer inquiry</a>
+        </div>
+
+        <div class="card pad">
+          <h3>Donate</h3>
+          <p class="muted">Financial support helps fund programs and materials.</p>
+          <a class="btn btn-primary" href="#contact">Ask about giving</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <div class="section-head fade-up">
+        <h2>Contact</h2>
+        <p>We’d love to connect with you.</p>
+      </div>
+
+      <div class="grid fade-up">
+        <div class="card pad">
+          <h3>Founder</h3>
+          <p class="muted"><strong>Marcia Jones</strong></p>
+          <p class="muted">Email: <a class="link" href="mailto:godesteemhsv@gmail.com">godesteemhsv@gmail.com</a></p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="mailto:godesteemhsv@gmail.com">Email GOD Esteem</a>
+            <a class="btn btn-ghost" href="#top">Back to top</a>
+          </div>
+        </div>
+
+        <div class="card pad">
+          <h3>Quick message</h3>
+          <p class="muted">Tap to send an email with a pre-filled subject.</p>
+          <a class="btn btn-primary"
+             href="mailto:godesteemhsv@gmail.com?subject=GOD%20Esteem%20Inquiry&body=Hi%20Marcia%2C%0A%0AI%27d%20love%20to%20learn%20more%20about%20GOD%20Esteem.%0A%0AName%3A%0AInterest%20(Volunteer%2FDonate%2FProgram)%3A%0A%0AThank%20you!">
+            Send a message
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>© <span id="year"></span> GOD Esteem • Founded by Marcia Jones</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
